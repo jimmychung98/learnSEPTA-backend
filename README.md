@@ -26,10 +26,10 @@ $  gradle run
 
 ## Editing the Kernel Regression Components
 ```console
-$ cd learn
-$ source venv/bin/activate          # activate the venv for your specific OS
-$ pip freeze > requirements.txt     # make sure the requirements.txt are updated
-$ pip install -r requirements.txt   # make sure all of the packages are installed
+$  cd learn
+$  source venv/bin/activate          # activate the venv for your specific OS
+$  pip freeze > requirements.txt     # make sure the requirements.txt are updated
+$  pip install -r requirements.txt   # make sure all of the packages are installed
 ```
 
 ## Philly Transit Microservices
