@@ -1,4 +1,5 @@
 .classpath
+.DS_store
 .project
 .gradle/
 .settings/
