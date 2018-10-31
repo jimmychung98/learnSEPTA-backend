@@ -1,4 +1,4 @@
-# Philly Transit using Kernel Regression
+# learnSEPTA using Kernel Regression
 
 The purpose of this project is to use machine learning non-parametric algorithms to **better predict SEPTA bus arrival times**. Currently, the Septa API only updates every few minutes, leading to inaccuracy in bus arrival times. We are modeling the data shown in this [Conference Paper](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=6338767).
 
