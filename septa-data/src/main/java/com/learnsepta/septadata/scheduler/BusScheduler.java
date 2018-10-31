@@ -14,10 +14,11 @@ public class BusScheduler {
 
     // Need to Loop through all bus transits and store into database
     // There are 77 buses
-    @Scheduled(fixedRate = 10000)
+    @Scheduled(fixedRate = 100000)
     public void getBusObject() {
+        
         bustransit = restTemplate.getForObject(
-                "http://www3.septa.org/hackathon/TransitView/17", BusTransit.class);
+                 "http://www3.septa.org/hackathon/TransitView/17", BusTransit.class);
         
         System.out.println(bustransit.toString());
     }
