@@ -1,6 +1,6 @@
 # learnSEPTA using Kernel Regression
 
-The purpose of this project is to use machine learning non-parametric algorithms to **better predict SEPTA bus arrival times**. Currently, the Septa API only updates every few minutes, leading to inaccuracy in bus arrival times. We are modeling the data shown in this [Conference Paper](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=6338767).
+The purpose of this project is to use machine learning non-parametric algorithms to **better predict SEPTA bus arrival times**. We are modeling the data shown in this [Conference Paper](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=6338767).
 
 ## Installation
 * [Java JDK v1.8+](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
@@ -20,7 +20,7 @@ To be more Specific...
 $  git clone https://github.com/jimmychung98/learnSEPTA-backend.git
 $  cd learnSEPTA-backend
 $  gradle clean build
-$  cd septa-data-server
+$  cd septa-data
 $  gradle run
 ```
 
@@ -39,7 +39,7 @@ $  pip install -r requirements.txt   # make sure all of the packages are install
 ## Planned Roadmap
 * [ ] Create a microservice to store and grab data from a database
 * [ ] Design the database and need to pick if we are using a relational or nonrelational database
-* [ ] Need to calculate the total distance a bus takes in its route
+* [X] Need to calculate the total distance a bus takes in its route
 * [ ] Need to calculate the arrival times of a given bus at a given stop
 * [ ] What variables do we need for the Kernel Regression?
 
