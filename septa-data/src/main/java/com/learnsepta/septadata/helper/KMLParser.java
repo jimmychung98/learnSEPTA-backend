@@ -57,7 +57,6 @@ public class KMLParser {
     /**
      * This method calculates the total distance between all
      * the GPS coordinates located in the KML file
-     * 
      */
     private void calculateTotalDistance() {
         String[] coords_set;
@@ -79,7 +78,7 @@ public class KMLParser {
             }
         }
 
-        System.out.println("Total Distance: " + this.totalDistance + " miles");
+        System.out.println("Total Distance: " + this.totalDistance + " kilometers");
     }
 
     /**
@@ -89,7 +88,7 @@ public class KMLParser {
      * @param latitudes     - 2 latitudes
      * @param longitudes    - 2 longitudes
      * @param elevation     - Should be defaulted to 0, 0
-     * @return double       - This returns the distance in miles
+     * @return double       - distance in km
      */
     public double distance(double lat1, double lat2, double lng1,
         double lng2, double el1, double el2) {
@@ -100,8 +99,8 @@ public class KMLParser {
                 + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2))
                 * Math.sin(lonDistance / 2) * Math.sin(lonDistance / 2);
         double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-        // Convert to Miles
-        double distance = RADIUS * c * 1000 * 0.000621371; 
+        // Convert to km
+        double distance = RADIUS * c; 
 
         double height = el1 - el2;
 
