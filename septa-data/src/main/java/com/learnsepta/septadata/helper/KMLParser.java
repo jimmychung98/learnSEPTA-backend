@@ -13,21 +13,19 @@ public class KMLParser {
     private Document doc;
     private ArrayList<String> coordinates;
     private double totalDistance;
+    private final int RADIUS = 6371;
 
     public KMLParser(String kml_website) {
         try {           
             System.out.println("----------------------------");
             URL url = new URL(kml_website);
             System.out.println("Initializing Coordinates for: " + url.toString());
-            //Resource resource = new ClassPathResource(file_name);
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder  dBuilder = dbFactory.newDocumentBuilder();
-            //doc = dBuilder.parse(resource.getFile());
             doc = dBuilder.parse(url.openStream());
             doc.getDocumentElement().normalize();
 
             totalDistance = 0;
-
             initCoordinates();
             calculateTotalDistance();
             
@@ -36,6 +34,7 @@ public class KMLParser {
             System.out.println(ex);
         }
     }
+
 
     private void initCoordinates() {
         NodeList lineStrings = doc.getElementsByTagName("LineString");
@@ -55,6 +54,11 @@ public class KMLParser {
         }
     }
 
+    /**
+     * This method calculates the total distance between all
+     * the GPS coordinates located in the KML file
+     * 
+     */
     private void calculateTotalDistance() {
         String[] coords_set;
         String[] coords_one_str;
@@ -71,16 +75,23 @@ public class KMLParser {
                     coords_two[index] = Double.parseDouble(coords_two_str[index]);
                 }
 
-                distance(coords_one[1], coords_two[1], coords_one[0], coords_two[0], coords_one[2], coords_two[2]);
+                totalDistance += distance(coords_one[1], coords_two[1], coords_one[0], coords_two[0], coords_one[2], coords_two[2]);
             }
         }
 
         System.out.println("Total Distance: " + this.totalDistance + " miles");
     }
 
-    private final int RADIUS = 6371;
-
-    public void distance(double lat1, double lat2, double lng1,
+    /**
+     * This method calculates the distance between two GPS coordinates
+     * using the Haversine method 
+     * 
+     * @param latitudes     - 2 latitudes
+     * @param longitudes    - 2 longitudes
+     * @param elevation     - Should be defaulted to 0, 0
+     * @return double       - This returns the distance in miles
+     */
+    public double distance(double lat1, double lat2, double lng1,
         double lng2, double el1, double el2) {
 
         double latDistance = Math.toRadians(lat2 - lat1);
@@ -96,9 +107,12 @@ public class KMLParser {
 
         distance = Math.pow(distance, 2) + Math.pow(height, 2);
 
-        totalDistance += Math.sqrt(distance);
+        return Math.sqrt(distance);
     }
 
+    /**
+     * @return double       - total Distance of KML route
+     */
     public double returnTotalDistance() {
         return totalDistance;
     }
