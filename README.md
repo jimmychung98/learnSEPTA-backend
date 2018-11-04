@@ -6,6 +6,18 @@ The purpose of this project is to use machine learning non-parametric algorithms
 * [Java JDK v1.8+](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 * [Gradle v4.10+](https://gradle.org/install/)
 * [Python v3.6+](https://www.python.org/download/releases/3.0/)
+* [Postgres 9.6+](https://www.postgresql.org/download/)
+
+## Database Setup
+* Download [Postgres 9.6+](https://www.postgresql.org/download/)
+* Go to PostGres Console and enter the following commands
+```console
+postgres=# CREATE DATABASE learnsepta_db;
+postgres=# CREATE USER learnsepta WITH LOGIN PASSWORD 'learnsepta';
+postgres=# ALTER USER learnsepta SUPERUSER CREATEDB CREATEROLE;
+postgres=# ALTER DATABASE learnsepta_db OWNER TO learnsepta; 
+```
+* Make sure the port is on port 5433
 
 ## Running the microservices
 ```console
@@ -34,6 +46,7 @@ $  pip install -r requirements.txt   # make sure all of the packages are install
 
 ## Philly Transit Microservices
 + **septa-data** - is a ***CRUD*** service that grabs data from the Septa API. Ideally, it should grab all the bus locations for a specific route and it should calculate the arrival times for each bus parallel from each other. It should store the data in a databse via a different microservice.
++ **data-repository** - connects to a PostGres Database. This microservice is mainly used by other microservices to store and retrieve data in the repository. Database must be setup first before you can use this microservice.
 + **microservice-name** - format for future reference.
 
 ## Planned Roadmap
